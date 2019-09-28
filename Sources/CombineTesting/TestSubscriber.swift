@@ -4,12 +4,14 @@ import Combine
 /// A subscriber to use for testing custom Publishers.
 public final class TestSubscriber<Input, Failure: Error> {
     public private(set) var events: [Event] = []
+    public private(set) var subscriptions: [Subscription] = []
     public init() {}
 }
 
 extension TestSubscriber: Subscriber {
 
     public func receive(subscription: Subscription) {
+        subscriptions.append(subscription)
         events.append(.subscription)
         subscription.request(.unlimited)
     }
