@@ -4,7 +4,7 @@ import Foundation
 /// An error type to use for testing purposes.
 public struct TestError: Error, Equatable {
     private let description: String
-    public init(description: String) {
+    public init(_ description: String) {
         self.description = description
     }
 }
@@ -15,6 +15,6 @@ extension TestError: LocalizedError {
 
 extension TestError: ExpressibleByStringLiteral {
     public init(stringLiteral string: String) {
-        self.init(description: string)
+        self.init(string)
     }
 }
